@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css';
 
-const API_URL = import.meta.env.VITE_API_URL;
+const API_URL = 'https://orzales-sarah-o.onrender.com';
 
 function App() {
   const [token, setToken] = useState(
