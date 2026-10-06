@@ -1,12 +1,41 @@
+/* =========================================================
+   STRAWBERRY PRODUCT MANAGER — COMPLETE UI REDESIGN
+   No JSX or functionality changes required.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
+
 * {
   box-sizing: border-box;
 }
 
+:root {
+  --berry: #d92f45;
+  --berry-dark: #b92338;
+  --berry-light: #ffe9ed;
+  --berry-pale: #fff6f7;
+
+  --leaf: #356b45;
+  --leaf-dark: #285437;
+  --leaf-light: #eaf4ec;
+
+  --ink: #202124;
+  --muted: #777276;
+  --border: #eadcdf;
+
+  --white: #ffffff;
+  --cream: #fffafb;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
-  background: #fff6f7;
-  color: #1f1f1f;
+  font-family: "DM Sans", Arial, Helvetica, sans-serif;
+  background: var(--berry-pale);
+  color: var(--ink);
 }
 
 button,
@@ -19,405 +48,855 @@ button {
   cursor: pointer;
 }
 
-/* ========================================
-   STRAWBERRY THEME
-   ========================================
-
-   Strawberry Red: #c62828
-   Dark Red:       #a51f1f
-   Leaf Green:     #2f5d3a
-   Soft Pink:      #fff6f7
-   Light Pink:     #fdebed
-   Black:          #1f1f1f
-   White:          #ffffff
-*/
-
-/* ========================================
-   LOGIN
-   ======================================== */
+/* =========================================================
+   LOGIN PAGE
+   ========================================================= */
 
 .login-page {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-  background:
-    radial-gradient(circle at top left, #fdebed 0%, transparent 35%),
-    radial-gradient(circle at bottom right, #f8dfe2 0%, transparent 35%),
-    #fff6f7;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  background: #fff;
+  overflow: hidden;
+  position: relative;
 }
+
+/* Decorative strawberry background */
+
+.login-page::before {
+  content: "";
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  background: #ffe1e6;
+  top: -220px;
+  left: -180px;
+  z-index: 0;
+}
+
+.login-page::after {
+  content: "";
+  position: absolute;
+  width: 430px;
+  height: 430px;
+  border-radius: 50%;
+  background: #f7dce1;
+  bottom: -220px;
+  right: -150px;
+  z-index: 0;
+}
+
+/* =========================================================
+   LOGIN BRAND PANEL
+   ========================================================= */
+
+.login-page > .login-card {
+  position: relative;
+  z-index: 2;
+}
+
+/*
+   The existing login card remains the functional container.
+   We visually transform it into a two-part composition.
+*/
 
 .login-card {
   width: 100%;
-  max-width: 430px;
-  background: #ffffff;
-  border: 1px solid #f1d7da;
-  border-radius: 18px;
-  padding: 38px;
-  box-shadow: 0 18px 45px rgba(122, 35, 43, 0.10);
+  max-width: none;
+  min-height: 100vh;
+
+  border: none;
+  border-radius: 0;
+
+  padding: 70px clamp(35px, 7vw, 110px);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  background:
+    radial-gradient(circle at 20% 15%, #fff1f3 0, transparent 25%),
+    #fff;
+
+  box-shadow: none;
 }
+
+/* Brand */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin-bottom: 32px;
+  gap: 17px;
+  margin-bottom: 55px;
 }
 
 .brand-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: 13px;
+  width: 58px;
+  height: 58px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #c62828;
+
+  border-radius: 18px;
+
+  background: var(--berry);
   color: white;
-  font-size: 24px;
-  font-weight: bold;
-  box-shadow: 0 5px 12px rgba(198, 40, 40, 0.22);
+
+  font-size: 28px;
+  font-weight: 700;
+
+  box-shadow:
+    0 10px 25px rgba(217, 47, 69, 0.25);
 }
 
 .brand h1 {
   margin: 0;
-  font-size: 25px;
-  color: #1f1f1f;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 31px;
+  line-height: 1;
+  color: var(--ink);
 }
 
 .brand p {
-  margin: 4px 0 0;
-  color: #6f6f6f;
+  margin: 8px 0 0;
+  color: var(--muted);
   font-size: 13px;
+  letter-spacing: 0.2px;
 }
 
+/* Login heading */
+
 .login-card h2 {
-  margin: 0 0 5px;
-  color: #1f1f1f;
+  margin: 0 0 9px;
+
+  font-size: clamp(32px, 4vw, 45px);
+  line-height: 1.1;
+  letter-spacing: -1.5px;
+  color: var(--ink);
 }
 
 .login-subtitle {
-  color: #777;
-  margin: 0 0 25px;
+  margin: 0 0 34px;
+
+  max-width: 420px;
+
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
 }
+
+/* Login fields */
 
 .login-card label,
 .product-form label {
   display: block;
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 7px;
-  color: #292929;
+
+  margin-bottom: 9px;
+
+  font-size: 13px;
+  font-weight: 700;
+  color: #393436;
+
+  letter-spacing: 0.2px;
 }
 
 .login-card input,
 .product-form input,
 .product-form textarea {
   width: 100%;
-  border: 1px solid #dfcfd1;
-  border-radius: 9px;
-  padding: 13px 14px;
-  margin-bottom: 18px;
+
+  border: 1.5px solid #e5d7da;
+  border-radius: 12px;
+
+  padding: 14px 16px;
+  margin-bottom: 21px;
+
   outline: none;
+
   background: #fff;
-  color: #1f1f1f;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+  color: var(--ink);
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
 }
 
-.login-card input::placeholder,
-.product-form input::placeholder,
-.product-form textarea::placeholder {
-  color: #aaa;
+.login-card input {
+  min-height: 50px;
 }
 
 .login-card input:focus,
 .product-form input:focus,
 .product-form textarea:focus {
-  border-color: #c62828;
-  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.09);
+  border-color: var(--berry);
+
+  box-shadow:
+    0 0 0 4px rgba(217, 47, 69, 0.08);
 }
 
-.login-card form button,
-.form-actions button {
-  border: none;
-  border-radius: 9px;
-  padding: 12px 20px;
-  background: #c62828;
-  color: white;
-  font-weight: bold;
-  transition: background 0.2s ease, transform 0.15s ease;
+.login-card input::placeholder,
+.product-form input::placeholder,
+.product-form textarea::placeholder {
+  color: #aaa1a4;
 }
+
+/* Login button */
 
 .login-card form button {
   width: 100%;
-  margin-top: 4px;
+
+  border: none;
+  border-radius: 12px;
+
+  padding: 15px 20px;
+  margin-top: 3px;
+
+  background: var(--berry);
+  color: white;
+
+  font-size: 14px;
+  font-weight: 700;
+
+  box-shadow:
+    0 9px 20px rgba(217, 47, 69, 0.20);
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.login-card form button:hover,
-.form-actions button:hover {
-  background: #a51f1f;
-}
+.login-card form button:hover {
+  background: var(--berry-dark);
 
-.login-card form button:active,
-.form-actions button:active {
-  transform: translateY(1px);
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 12px 25px rgba(217, 47, 69, 0.26);
 }
 
 .login-note {
+  margin-top: 28px;
+
   text-align: center;
-  color: #888;
+
+  color: #999195;
   font-size: 12px;
-  margin-top: 22px;
 }
 
-/* ========================================
+/* =========================================================
+   LOGIN DECORATIVE RIGHT SIDE
+   ========================================================= */
+
+/*
+   We use the login card itself as the main content.
+   A decorative visual is created through its right-side
+   background layer without changing JSX.
+*/
+
+.login-card::after {
+  content: "🍓";
+
+  position: absolute;
+
+  width: 46vw;
+  height: 100vh;
+
+  right: 0;
+  top: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: clamp(90px, 13vw, 180px);
+
+  background:
+    radial-gradient(circle at 30% 30%, #ef5367 0 3%, transparent 3.5%),
+    radial-gradient(circle at 70% 60%, #ef5367 0 3%, transparent 3.5%),
+    radial-gradient(circle at 55% 25%, #ef5367 0 2.5%, transparent 3%),
+    linear-gradient(
+      145deg,
+      #d92f45 0%,
+      #c6283d 55%,
+      #a91f34 100%
+    );
+
+  color: white;
+
+  z-index: -1;
+
+  clip-path: polygon(
+    18% 0,
+    100% 0,
+    100% 100%,
+    18% 100%,
+    0 50%
+  );
+
+  opacity: 0.98;
+}
+
+/* =========================================================
    ALERTS
-   ======================================== */
+   ========================================================= */
 
 .alert {
-  padding: 13px 16px;
-  border-radius: 9px;
-  margin-bottom: 20px;
-  font-size: 14px;
+  padding: 14px 17px;
+
+  border-radius: 11px;
+
+  margin-bottom: 22px;
+
+  font-size: 13px;
+  font-weight: 600;
+
   border: 1px solid transparent;
 }
 
 .alert.success {
-  background: #edf7ef;
-  color: #2f5d3a;
-  border-color: #cfe5d3;
+  background: var(--leaf-light);
+  color: var(--leaf-dark);
+  border-color: #cde2d2;
 }
 
 .alert.error {
-  background: #fff0f1;
-  color: #a51f1f;
-  border-color: #f1cacc;
+  background: #fff0f2;
+  color: #a82337;
+  border-color: #f1cbd1;
 }
 
-/* ========================================
-   TOP BAR
-   ======================================== */
+/* =========================================================
+   TOP NAVIGATION
+   ========================================================= */
 
 .topbar {
-  background: #1f1f1f;
-  color: white;
-  min-height: 70px;
+  min-height: 78px;
+
   padding: 0 6%;
+
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 3px solid #c62828;
+
+  background: var(--ink);
+  color: white;
+
+  border-bottom: 4px solid var(--berry);
+
+  position: relative;
+  z-index: 10;
 }
 
 .logo {
-  font-size: 21px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.logo::before {
+  content: "🍓";
+
+  width: 38px;
+  height: 38px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 11px;
+
+  background: var(--berry);
+
+  font-family: Arial, sans-serif;
+  font-size: 19px;
 }
 
 .topbar span {
   font-size: 12px;
-  opacity: 0.7;
+  opacity: 0.65;
 }
 
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 15px;
+  gap: 18px;
 }
 
 .topbar-right > span {
-  font-size: 14px;
+  padding: 8px 13px;
+
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+
+  font-size: 13px;
   opacity: 1;
 }
 
 .logout-btn {
-  border: 1px solid #555;
+  border: 1px solid #5d5d60;
+
   background: transparent;
+
   color: white;
-  border-radius: 8px;
-  padding: 8px 14px;
-  transition: background 0.2s ease, border-color 0.2s ease;
+
+  border-radius: 9px;
+
+  padding: 9px 15px;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.2s ease;
 }
 
 .logout-btn:hover {
-  background: #c62828;
-  border-color: #c62828;
+  background: var(--berry);
+  border-color: var(--berry);
+
+  transform: translateY(-1px);
 }
 
-/* ========================================
-   MAIN
-   ======================================== */
+/* =========================================================
+   MAIN PAGE BACKGROUND
+   ========================================================= */
 
 .container {
-  width: 90%;
+  width: 88%;
   max-width: 1250px;
-  margin: 35px auto 60px;
+
+  margin: 0 auto;
+
+  padding: 48px 0 75px;
+
+  position: relative;
 }
 
-.form-card,
-.products-section {
-  background: #ffffff;
-  border: 1px solid #f0dfe1;
-  border-radius: 14px;
-  padding: 28px;
-  margin-bottom: 25px;
-  box-shadow: 0 5px 22px rgba(80, 30, 35, 0.06);
+/* Decorative background circles */
+
+.container::before {
+  content: "";
+
+  position: fixed;
+
+  width: 320px;
+  height: 320px;
+
+  border-radius: 50%;
+
+  background: #ffecef;
+
+  top: 170px;
+  right: -170px;
+
+  z-index: -1;
 }
+
+.container::after {
+  content: "";
+
+  position: fixed;
+
+  width: 260px;
+  height: 260px;
+
+  border-radius: 50%;
+
+  background: #edf6ef;
+
+  bottom: -100px;
+  left: -130px;
+
+  z-index: -1;
+}
+
+/* =========================================================
+   FORM CARD
+   ========================================================= */
+
+.form-card {
+  position: relative;
+
+  background: var(--white);
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
+  padding: 34px 36px 38px;
+
+  margin-bottom: 30px;
+
+  box-shadow:
+    0 14px 40px rgba(91, 40, 47, 0.07);
+
+  overflow: hidden;
+}
+
+/* Red top accent */
+
+.form-card::before {
+  content: "";
+
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 100%;
+  height: 5px;
+
+  background: linear-gradient(
+    90deg,
+    var(--berry),
+    #ed5367,
+    var(--leaf)
+  );
+}
+
+/* =========================================================
+   SECTION HEADINGS
+   ========================================================= */
 
 .section-heading {
   display: flex;
+
   justify-content: space-between;
-  align-items: center;
-  margin-bottom: 25px;
+  align-items: flex-start;
+
+  gap: 25px;
+
+  margin-bottom: 30px;
 }
 
 .section-heading h2 {
-  margin: 0 0 5px;
-  color: #1f1f1f;
+  margin: 0 0 7px;
+
+  font-family: "Playfair Display", Georgia, serif;
+
+  font-size: 28px;
+  line-height: 1.15;
+
+  color: var(--ink);
+
+  letter-spacing: -0.5px;
 }
 
 .section-heading p {
   margin: 0;
-  color: #7b7375;
-  font-size: 14px;
+
+  color: var(--muted);
+
+  font-size: 13px;
+  line-height: 1.6;
 }
 
-/* ========================================
+/* =========================================================
    FORM
-   ======================================== */
+   ========================================================= */
+
+.product-form {
+  position: relative;
+}
 
 .product-form textarea {
-  min-height: 90px;
+  min-height: 105px;
+
   resize: vertical;
+
+  line-height: 1.6;
 }
 
 .form-row {
   display: grid;
+
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+
+  gap: 22px;
 }
 
 .form-actions {
   display: flex;
-  gap: 10px;
+
+  align-items: center;
+
+  gap: 11px;
+
+  margin-top: 3px;
+}
+
+.form-actions button {
+  border: none;
+
+  border-radius: 10px;
+
+  padding: 12px 20px;
+
+  background: var(--berry);
+
+  color: white;
+
+  font-size: 13px;
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.form-actions button:hover {
+  background: var(--berry-dark);
+
+  transform: translateY(-1px);
 }
 
 .secondary-btn,
 .refresh-btn {
-  border: 1px solid #d9c6c9 !important;
-  background: #ffffff !important;
-  color: #2f5d3a !important;
+  border: 1px solid #d8c8cb !important;
+
+  background: white !important;
+
+  color: var(--leaf-dark) !important;
 }
 
 .secondary-btn:hover,
 .refresh-btn:hover {
-  background: #f8eeee !important;
-  border-color: #c9aeb2 !important;
+  background: var(--leaf-light) !important;
+
+  border-color: #bdd3c2 !important;
 }
 
 .refresh-btn {
-  border-radius: 8px;
-  padding: 9px 15px;
-  font-weight: bold;
+  border-radius: 10px;
+
+  padding: 10px 15px;
+
+  font-size: 12px;
+  font-weight: 700;
 }
 
-/* ========================================
+/* =========================================================
+   PRODUCTS SECTION
+   ========================================================= */
+
+.products-section {
+  background: white;
+
+  border: 1px solid var(--border);
+
+  border-radius: 22px;
+
+  padding: 34px 36px 36px;
+
+  margin-bottom: 30px;
+
+  box-shadow:
+    0 14px 40px rgba(91, 40, 47, 0.07);
+}
+
+/* =========================================================
    TABLE
-   ======================================== */
+   ========================================================= */
 
 .table-wrapper {
   overflow-x: auto;
+
   border: 1px solid #eadcdf;
-  border-radius: 10px;
+
+  border-radius: 15px;
+
+  background: white;
 }
 
 table {
   width: 100%;
-  border-collapse: collapse;
+
+  border-collapse: separate;
+
+  border-spacing: 0;
+
   min-width: 800px;
 }
 
 th {
-  background: #fdebed;
-  color: #3a292b;
+  background: #fff0f2;
+
+  color: #4b3035;
+
   text-align: left;
-  padding: 14px 13px;
-  font-size: 13px;
-  font-weight: bold;
-  border-bottom: 2px solid #f1d4d7;
+
+  padding: 15px 16px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.7px;
+
+  border-bottom: 1px solid #ecd6da;
+}
+
+th:first-child {
+  border-top-left-radius: 14px;
+}
+
+th:last-child {
+  border-top-right-radius: 14px;
 }
 
 td {
-  padding: 14px 13px;
-  border-bottom: 1px solid #eee3e4;
-  font-size: 14px;
-  background: #ffffff;
+  padding: 17px 16px;
+
+  border-bottom: 1px solid #f0e5e7;
+
+  font-size: 13px;
+
+  background: white;
+
+  vertical-align: middle;
 }
 
 tbody tr:last-child td {
   border-bottom: none;
 }
 
+tbody tr {
+  transition: transform 0.15s ease;
+}
+
 tbody tr:hover td {
-  background: #fff9fa;
+  background: #fffafb;
 }
 
 .product-name {
-  font-weight: bold;
-  color: #2f5d3a;
+  font-weight: 700;
+
+  color: var(--ink);
 }
+
+/* =========================================================
+   TABLE ACTIONS
+   ========================================================= */
 
 .actions {
   display: flex;
+
   gap: 7px;
 }
 
 .edit-btn,
 .delete-btn {
   border: none;
-  border-radius: 6px;
-  padding: 7px 11px;
-  font-size: 12px;
-  font-weight: bold;
-  transition: background 0.2s ease, transform 0.15s ease;
+
+  border-radius: 8px;
+
+  padding: 8px 12px;
+
+  font-size: 11px;
+
+  font-weight: 700;
+
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .edit-btn {
-  background: #edf4ee;
-  color: #2f5d3a;
+  background: var(--leaf-light);
+
+  color: var(--leaf-dark);
 }
 
 .edit-btn:hover {
-  background: #dcebdd;
+  background: #d8eadd;
+
+  transform: translateY(-1px);
 }
 
 .delete-btn {
-  background: #fff0f1;
-  color: #b52222;
+  background: #fff0f2;
+
+  color: #b42338;
 }
 
 .delete-btn:hover {
-  background: #f9dadd;
+  background: #f9d9df;
+
+  transform: translateY(-1px);
 }
 
-.edit-btn:active,
-.delete-btn:active {
-  transform: translateY(1px);
-}
+/* =========================================================
+   EMPTY TABLE
+   ========================================================= */
 
 .empty {
   text-align: center;
-  color: #888;
-  padding: 35px;
+
+  color: #999;
+
+  padding: 50px 20px;
+
+  font-size: 14px;
 }
 
-/* ========================================
+/* =========================================================
    RESPONSIVE
-   ======================================== */
+   ========================================================= */
+
+@media (max-width: 950px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .login-card {
+    min-height: 100vh;
+
+    padding: 50px 8%;
+  }
+
+  .login-card::after {
+    display: none;
+  }
+
+  .container {
+    width: 92%;
+  }
+}
 
 @media (max-width: 700px) {
   .topbar {
-    padding: 15px 5%;
+    min-height: 70px;
+
+    padding: 13px 5%;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  .logo::before {
+    width: 34px;
+    height: 34px;
+
+    font-size: 17px;
+  }
+
+  .topbar-right {
+    gap: 8px;
   }
 
   .topbar-right > span {
@@ -426,24 +905,51 @@ tbody tr:hover td {
 
   .container {
     width: 94%;
+
+    padding-top: 30px;
   }
 
   .form-card,
   .products-section {
-    padding: 20px;
+    padding: 27px 20px;
+    border-radius: 17px;
+  }
+
+  .section-heading {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 17px;
+  }
+
+  .section-heading h2 {
+    font-size: 24px;
   }
 
   .form-row {
     grid-template-columns: 1fr;
+
     gap: 0;
   }
 
-  .section-heading {
-    align-items: flex-start;
-    gap: 15px;
+  .form-actions {
+    flex-wrap: wrap;
   }
 
   .login-card {
-    padding: 28px 24px;
+    padding: 40px 25px;
+  }
+
+  .brand {
+    margin-bottom: 42px;
+  }
+
+  .brand h1 {
+    font-size: 27px;
+  }
+
+  .login-card h2 {
+    font-size: 34px;
   }
 }
