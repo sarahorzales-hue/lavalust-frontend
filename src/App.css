@@ -953,3 +953,398 @@ tbody tr:hover td {
     font-size: 34px;
   }
 }
+
+/* =========================================================
+   STRAWBERRY TECH — FINAL VISUAL POLISH
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   TECH GRID BACKGROUND
+   --------------------------------------------------------- */
+
+body {
+  background-color: #fff7f8;
+
+  background-image:
+    linear-gradient(rgba(217, 47, 69, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(217, 47, 69, 0.035) 1px, transparent 1px);
+
+  background-size: 32px 32px;
+}
+
+/* ---------------------------------------------------------
+   NARROWER MANAGEMENT AREA
+   --------------------------------------------------------- */
+
+.container {
+  width: 84%;
+  max-width: 1080px;
+  padding-top: 42px;
+}
+
+/* ---------------------------------------------------------
+   STRAWBERRY RED TECH BORDER
+   --------------------------------------------------------- */
+
+.form-card,
+.products-section {
+  border: 1px solid #d92f45;
+  border-radius: 16px;
+
+  box-shadow:
+    0 8px 25px rgba(91, 40, 47, 0.055);
+
+  position: relative;
+}
+
+/* Small technical corner accents */
+
+.form-card::after,
+.products-section::after {
+  content: "";
+
+  position: absolute;
+
+  width: 18px;
+  height: 18px;
+
+  right: -1px;
+  bottom: -1px;
+
+  border-right: 2px solid #356b45;
+  border-bottom: 2px solid #356b45;
+
+  pointer-events: none;
+}
+
+/* Top red technical line */
+
+.form-card::before,
+.products-section::before {
+  content: "";
+
+  position: absolute;
+
+  left: 24px;
+  top: -1px;
+
+  width: 75px;
+  height: 3px;
+
+  background: #d92f45;
+
+  border-radius: 0 0 3px 3px;
+}
+
+/* ---------------------------------------------------------
+   SECTION HEADING
+   --------------------------------------------------------- */
+
+.section-heading {
+  padding-bottom: 18px;
+
+  border-bottom: 1px solid #f0dadd;
+}
+
+.section-heading h2 {
+  position: relative;
+
+  display: inline-block;
+}
+
+.section-heading h2::before {
+  content: "//";
+
+  margin-right: 9px;
+
+  font-family: monospace;
+  font-size: 15px;
+
+  color: #d92f45;
+}
+
+.section-heading p {
+  font-family: "DM Sans", Arial, sans-serif;
+}
+
+/* ---------------------------------------------------------
+   FORM INPUTS — TECH STYLE
+   --------------------------------------------------------- */
+
+.product-form input,
+.product-form textarea {
+  border: 1px solid #dfc9cd;
+  border-radius: 8px;
+
+  background: #fffdfd;
+}
+
+.product-form input:focus,
+.product-form textarea:focus {
+  border-color: #d92f45;
+
+  box-shadow:
+    0 0 0 3px rgba(217, 47, 69, 0.07);
+}
+
+/* ---------------------------------------------------------
+   TABLE CONTAINER
+   --------------------------------------------------------- */
+
+.table-wrapper {
+  border: 1px solid #d92f45;
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  box-shadow:
+    inset 0 0 0 1px rgba(217, 47, 69, 0.025);
+}
+
+/* ---------------------------------------------------------
+   TABLE — MORE CONTROLLED WIDTH
+   --------------------------------------------------------- */
+
+table {
+  table-layout: fixed;
+  min-width: 0;
+}
+
+/* Intentional column proportions */
+
+th:nth-child(1),
+td:nth-child(1) {
+  width: 9%;
+}
+
+th:nth-child(2),
+td:nth-child(2) {
+  width: 18%;
+}
+
+th:nth-child(3),
+td:nth-child(3) {
+  width: 27%;
+}
+
+th:nth-child(4),
+td:nth-child(4) {
+  width: 14%;
+}
+
+th:nth-child(5),
+td:nth-child(5) {
+  width: 13%;
+}
+
+th:nth-child(6),
+td:nth-child(6) {
+  width: 19%;
+}
+
+/* ---------------------------------------------------------
+   TECHNICAL TABLE HEADER
+   --------------------------------------------------------- */
+
+th {
+  background: #fff0f2;
+
+  border-bottom: 1px solid #d92f45;
+
+  color: #342529;
+
+  font-family: "DM Sans", Arial, sans-serif;
+
+  font-size: 11px;
+
+  letter-spacing: 1px;
+
+  white-space: nowrap;
+}
+
+/* Tiny technical marker */
+
+th::before {
+  content: "• ";
+
+  color: #d92f45;
+}
+
+/* ---------------------------------------------------------
+   TABLE ROWS
+   --------------------------------------------------------- */
+
+td {
+  padding: 16px 14px;
+
+  color: #302b2d;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+tbody tr:hover td {
+  background: #fff8f9;
+}
+
+/* ID */
+
+td:first-child {
+  color: #777;
+
+  font-family: monospace;
+
+  font-size: 12px;
+}
+
+/* Product name */
+
+.product-name {
+  color: #202124;
+
+  font-weight: 700;
+}
+
+/* ---------------------------------------------------------
+   ACTION BUTTONS
+   --------------------------------------------------------- */
+
+.edit-btn,
+.delete-btn {
+  border-radius: 7px;
+
+  padding: 8px 13px;
+
+  font-size: 11px;
+
+  letter-spacing: 0.2px;
+}
+
+.edit-btn {
+  border: 1px solid #c9dfce;
+
+  background: #edf6ef;
+
+  color: #285437;
+}
+
+.delete-btn {
+  border: 1px solid #f0cdd2;
+
+  background: #fff0f2;
+
+  color: #b92338;
+}
+
+/* ---------------------------------------------------------
+   REFRESH BUTTON — TECH LOOK
+   --------------------------------------------------------- */
+
+.refresh-btn {
+  border: 1px solid #d92f45 !important;
+
+  background: #fff !important;
+
+  color: #b92338 !important;
+
+  border-radius: 8px;
+
+  position: relative;
+}
+
+.refresh-btn::before {
+  content: "↻";
+
+  margin-right: 6px;
+
+  font-size: 14px;
+}
+
+.refresh-btn:hover {
+  background: #fff0f2 !important;
+
+  border-color: #b92338 !important;
+}
+
+/* ---------------------------------------------------------
+   ADD PRODUCT BUTTON
+   --------------------------------------------------------- */
+
+.form-actions button:not(.secondary-btn) {
+  border-radius: 8px;
+
+  background: #d92f45;
+
+  box-shadow:
+    4px 4px 0 #356b45;
+}
+
+.form-actions button:not(.secondary-btn):hover {
+  background: #b92338;
+
+  transform: translate(1px, 1px);
+
+  box-shadow:
+    2px 2px 0 #356b45;
+}
+
+/* ---------------------------------------------------------
+   LABELS
+   --------------------------------------------------------- */
+
+.product-form label {
+  font-size: 12px;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.8px;
+
+  color: #4b3a3d;
+}
+
+.product-form label::before {
+  content: "▸ ";
+
+  color: #d92f45;
+
+  font-family: monospace;
+}
+
+/* ---------------------------------------------------------
+   PRODUCT LIST TITLE
+   --------------------------------------------------------- */
+
+.products-section .section-heading h2 {
+  font-size: 27px;
+}
+
+/* ---------------------------------------------------------
+   RESPONSIVE
+   --------------------------------------------------------- */
+
+@media (max-width: 900px) {
+  .container {
+    width: 92%;
+  }
+
+  table {
+    min-width: 760px;
+    table-layout: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .container {
+    width: 94%;
+  }
+
+  .form-card,
+  .products-section {
+    border-radius: 14px;
+  }
+
+  .section-heading h2::before {
+    display: none;
+  }
+}
