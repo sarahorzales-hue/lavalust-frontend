@@ -5,8 +5,8 @@
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
-  background: #f4f6f8;
-  color: #20242a;
+  background: #fff6f7;
+  color: #1f1f1f;
 }
 
 button,
@@ -19,7 +19,22 @@ button {
   cursor: pointer;
 }
 
-/* LOGIN */
+/* ========================================
+   STRAWBERRY THEME
+   ========================================
+
+   Strawberry Red: #c62828
+   Dark Red:       #a51f1f
+   Leaf Green:     #2f5d3a
+   Soft Pink:      #fff6f7
+   Light Pink:     #fdebed
+   Black:          #1f1f1f
+   White:          #ffffff
+*/
+
+/* ========================================
+   LOGIN
+   ======================================== */
 
 .login-page {
   min-height: 100vh;
@@ -27,16 +42,20 @@ button {
   align-items: center;
   justify-content: center;
   padding: 24px;
-  background: linear-gradient(135deg, #151922, #303642);
+  background:
+    radial-gradient(circle at top left, #fdebed 0%, transparent 35%),
+    radial-gradient(circle at bottom right, #f8dfe2 0%, transparent 35%),
+    #fff6f7;
 }
 
 .login-card {
   width: 100%;
   max-width: 430px;
-  background: white;
+  background: #ffffff;
+  border: 1px solid #f1d7da;
   border-radius: 18px;
   padding: 38px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 18px 45px rgba(122, 35, 43, 0.10);
 }
 
 .brand {
@@ -49,34 +68,37 @@ button {
 .brand-icon {
   width: 48px;
   height: 48px;
-  border-radius: 12px;
+  border-radius: 13px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #20242a;
+  background: #c62828;
   color: white;
   font-size: 24px;
   font-weight: bold;
+  box-shadow: 0 5px 12px rgba(198, 40, 40, 0.22);
 }
 
 .brand h1 {
   margin: 0;
   font-size: 25px;
+  color: #1f1f1f;
 }
 
 .brand p {
   margin: 4px 0 0;
-  color: #777;
+  color: #6f6f6f;
   font-size: 13px;
 }
 
 .login-card h2 {
-  margin-bottom: 5px;
+  margin: 0 0 5px;
+  color: #1f1f1f;
 }
 
 .login-subtitle {
   color: #777;
-  margin-bottom: 25px;
+  margin: 0 0 25px;
 }
 
 .login-card label,
@@ -85,38 +107,60 @@ button {
   font-size: 14px;
   font-weight: bold;
   margin-bottom: 7px;
+  color: #292929;
 }
 
 .login-card input,
 .product-form input,
 .product-form textarea {
   width: 100%;
-  border: 1px solid #d7dce2;
-  border-radius: 8px;
-  padding: 12px 13px;
+  border: 1px solid #dfcfd1;
+  border-radius: 9px;
+  padding: 13px 14px;
   margin-bottom: 18px;
   outline: none;
+  background: #fff;
+  color: #1f1f1f;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.login-card input::placeholder,
+.product-form input::placeholder,
+.product-form textarea::placeholder {
+  color: #aaa;
 }
 
 .login-card input:focus,
 .product-form input:focus,
 .product-form textarea:focus {
-  border-color: #59636f;
+  border-color: #c62828;
+  box-shadow: 0 0 0 3px rgba(198, 40, 40, 0.09);
 }
 
 .login-card form button,
 .form-actions button {
   border: none;
-  border-radius: 8px;
+  border-radius: 9px;
   padding: 12px 20px;
-  background: #20242a;
+  background: #c62828;
   color: white;
   font-weight: bold;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .login-card form button {
   width: 100%;
   margin-top: 4px;
+}
+
+.login-card form button:hover,
+.form-actions button:hover {
+  background: #a51f1f;
+}
+
+.login-card form button:active,
+.form-actions button:active {
+  transform: translateY(1px);
 }
 
 .login-note {
@@ -126,35 +170,43 @@ button {
   margin-top: 22px;
 }
 
-/* ALERTS */
+/* ========================================
+   ALERTS
+   ======================================== */
 
 .alert {
   padding: 13px 16px;
-  border-radius: 8px;
+  border-radius: 9px;
   margin-bottom: 20px;
   font-size: 14px;
+  border: 1px solid transparent;
 }
 
 .alert.success {
-  background: #e9f7ef;
-  color: #176b3a;
+  background: #edf7ef;
+  color: #2f5d3a;
+  border-color: #cfe5d3;
 }
 
 .alert.error {
-  background: #fff0f0;
-  color: #b42318;
+  background: #fff0f1;
+  color: #a51f1f;
+  border-color: #f1cacc;
 }
 
-/* TOP BAR */
+/* ========================================
+   TOP BAR
+   ======================================== */
 
 .topbar {
-  background: #20242a;
+  background: #1f1f1f;
   color: white;
   min-height: 70px;
   padding: 0 6%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 3px solid #c62828;
 }
 
 .logo {
@@ -179,14 +231,22 @@ button {
 }
 
 .logout-btn {
-  border: 1px solid #59616c;
+  border: 1px solid #555;
   background: transparent;
   color: white;
-  border-radius: 7px;
+  border-radius: 8px;
   padding: 8px 14px;
+  transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-/* MAIN */
+.logout-btn:hover {
+  background: #c62828;
+  border-color: #c62828;
+}
+
+/* ========================================
+   MAIN
+   ======================================== */
 
 .container {
   width: 90%;
@@ -196,11 +256,12 @@ button {
 
 .form-card,
 .products-section {
-  background: white;
+  background: #ffffff;
+  border: 1px solid #f0dfe1;
   border-radius: 14px;
   padding: 28px;
   margin-bottom: 25px;
-  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 5px 22px rgba(80, 30, 35, 0.06);
 }
 
 .section-heading {
@@ -212,15 +273,18 @@ button {
 
 .section-heading h2 {
   margin: 0 0 5px;
+  color: #1f1f1f;
 }
 
 .section-heading p {
   margin: 0;
-  color: #7b838d;
+  color: #7b7375;
   font-size: 14px;
 }
 
-/* FORM */
+/* ========================================
+   FORM
+   ======================================== */
 
 .product-form textarea {
   min-height: 90px;
@@ -240,20 +304,31 @@ button {
 
 .secondary-btn,
 .refresh-btn {
-  border: 1px solid #ccd1d7 !important;
-  background: white !important;
-  color: #30353b !important;
+  border: 1px solid #d9c6c9 !important;
+  background: #ffffff !important;
+  color: #2f5d3a !important;
+}
+
+.secondary-btn:hover,
+.refresh-btn:hover {
+  background: #f8eeee !important;
+  border-color: #c9aeb2 !important;
 }
 
 .refresh-btn {
   border-radius: 8px;
   padding: 9px 15px;
+  font-weight: bold;
 }
 
-/* TABLE */
+/* ========================================
+   TABLE
+   ======================================== */
 
 .table-wrapper {
   overflow-x: auto;
+  border: 1px solid #eadcdf;
+  border-radius: 10px;
 }
 
 table {
@@ -263,20 +338,33 @@ table {
 }
 
 th {
-  background: #f5f6f8;
+  background: #fdebed;
+  color: #3a292b;
   text-align: left;
-  padding: 13px;
+  padding: 14px 13px;
   font-size: 13px;
+  font-weight: bold;
+  border-bottom: 2px solid #f1d4d7;
 }
 
 td {
   padding: 14px 13px;
-  border-bottom: 1px solid #e8ebee;
+  border-bottom: 1px solid #eee3e4;
   font-size: 14px;
+  background: #ffffff;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tbody tr:hover td {
+  background: #fff9fa;
 }
 
 .product-name {
   font-weight: bold;
+  color: #2f5d3a;
 }
 
 .actions {
@@ -291,16 +379,30 @@ td {
   padding: 7px 11px;
   font-size: 12px;
   font-weight: bold;
+  transition: background 0.2s ease, transform 0.15s ease;
 }
 
 .edit-btn {
-  background: #eef1f4;
-  color: #30353b;
+  background: #edf4ee;
+  color: #2f5d3a;
+}
+
+.edit-btn:hover {
+  background: #dcebdd;
 }
 
 .delete-btn {
-  background: #fff0f0;
-  color: #c52b2b;
+  background: #fff0f1;
+  color: #b52222;
+}
+
+.delete-btn:hover {
+  background: #f9dadd;
+}
+
+.edit-btn:active,
+.delete-btn:active {
+  transform: translateY(1px);
 }
 
 .empty {
@@ -309,7 +411,9 @@ td {
   padding: 35px;
 }
 
-/* RESPONSIVE */
+/* ========================================
+   RESPONSIVE
+   ======================================== */
 
 @media (max-width: 700px) {
   .topbar {
@@ -337,5 +441,9 @@ td {
   .section-heading {
     align-items: flex-start;
     gap: 15px;
+  }
+
+  .login-card {
+    padding: 28px 24px;
   }
 }
