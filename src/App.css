@@ -1,30 +1,29 @@
 /* =========================================================
-   STRAWBERRY PRODUCT MANAGER — COMPLETE UI REDESIGN
-   No JSX or functionality changes required.
+   LAVALUST PRODUCT MANAGEMENT SYSTEM
+   STRAWBERRY TECH UI
    ========================================================= */
-
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap');
 
 * {
   box-sizing: border-box;
 }
 
 :root {
-  --berry: #d92f45;
-  --berry-dark: #b92338;
-  --berry-light: #ffe9ed;
-  --berry-pale: #fff6f7;
+  --red: #d92f45;
+  --red-dark: #b92338;
+  --red-soft: #fff0f2;
+  --pink: #fff7f8;
+  --pink-line: #efd9dd;
 
-  --leaf: #356b45;
-  --leaf-dark: #285437;
-  --leaf-light: #eaf4ec;
+  --green: #356b45;
+  --green-dark: #285437;
+  --green-soft: #edf6ef;
 
-  --ink: #202124;
-  --muted: #777276;
-  --border: #eadcdf;
+  --black: #202124;
+  --dark: #29282a;
+  --gray: #777174;
+  --light-gray: #f5f2f3;
 
   --white: #ffffff;
-  --cream: #fffafb;
 }
 
 html {
@@ -33,9 +32,23 @@ html {
 
 body {
   margin: 0;
-  font-family: "DM Sans", Arial, Helvetica, sans-serif;
-  background: var(--berry-pale);
-  color: var(--ink);
+  font-family: Arial, Helvetica, sans-serif;
+  background: var(--pink);
+  color: var(--black);
+
+  /* subtle technical grid */
+  background-image:
+    linear-gradient(
+      rgba(217, 47, 69, 0.025) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(217, 47, 69, 0.025) 1px,
+      transparent 1px
+    );
+
+  background-size: 32px 32px;
 }
 
 button,
@@ -54,290 +67,336 @@ button {
 
 .login-page {
   min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  background: #fff;
-  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 40px 20px;
+
   position: relative;
+  overflow: hidden;
+
+  background:
+    radial-gradient(
+      circle at 10% 10%,
+      rgba(217, 47, 69, 0.08),
+      transparent 28%
+    ),
+    radial-gradient(
+      circle at 90% 90%,
+      rgba(53, 107, 69, 0.07),
+      transparent 25%
+    ),
+    #fff8f9;
 }
 
-/* Decorative strawberry background */
+/* decorative technical lines */
 
 .login-page::before {
   content: "";
+
   position: absolute;
+
   width: 520px;
   height: 520px;
+
+  border: 1px solid rgba(217, 47, 69, 0.12);
   border-radius: 50%;
-  background: #ffe1e6;
-  top: -220px;
-  left: -180px;
-  z-index: 0;
+
+  top: -280px;
+  left: -230px;
+
+  pointer-events: none;
 }
 
 .login-page::after {
   content: "";
+
   position: absolute;
-  width: 430px;
-  height: 430px;
+
+  width: 420px;
+  height: 420px;
+
+  border: 1px solid rgba(53, 107, 69, 0.12);
   border-radius: 50%;
-  background: #f7dce1;
-  bottom: -220px;
-  right: -150px;
-  z-index: 0;
+
+  right: -230px;
+  bottom: -230px;
+
+  pointer-events: none;
 }
 
 /* =========================================================
-   LOGIN BRAND PANEL
+   LOGIN CARD
    ========================================================= */
-
-.login-page > .login-card {
-  position: relative;
-  z-index: 2;
-}
-
-/*
-   The existing login card remains the functional container.
-   We visually transform it into a two-part composition.
-*/
 
 .login-card {
   width: 100%;
-  max-width: none;
-  min-height: 100vh;
+  max-width: 460px;
 
-  border: none;
-  border-radius: 0;
+  background: var(--white);
 
-  padding: 70px clamp(35px, 7vw, 110px);
+  border: 1px solid var(--red);
+  border-radius: 18px;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 42px 44px;
 
-  background:
-    radial-gradient(circle at 20% 15%, #fff1f3 0, transparent 25%),
-    #fff;
+  position: relative;
+  z-index: 2;
 
-  box-shadow: none;
+  box-shadow:
+    0 20px 50px rgba(91, 40, 47, 0.10);
+
+  overflow: hidden;
 }
 
-/* Brand */
+/* top technical accent */
+
+.login-card::before {
+  content: "";
+
+  position: absolute;
+
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 4px;
+
+  background: linear-gradient(
+    90deg,
+    var(--red) 0%,
+    var(--red) 65%,
+    var(--green) 65%,
+    var(--green) 100%
+  );
+}
+
+/* bottom-right corner */
+
+.login-card::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 42px;
+  height: 42px;
+
+  border-right: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+
+  border-radius: 0 0 17px 0;
+
+  pointer-events: none;
+}
+
+/* =========================================================
+   BRAND
+   ========================================================= */
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 17px;
-  margin-bottom: 55px;
+
+  gap: 14px;
+
+  margin-bottom: 35px;
 }
 
 .brand-icon {
-  width: 58px;
-  height: 58px;
+  width: 52px;
+  height: 52px;
+
+  flex-shrink: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 18px;
+  background: var(--red);
 
-  background: var(--berry);
   color: white;
 
-  font-size: 28px;
-  font-weight: 700;
+  border-radius: 14px;
+
+  font-size: 23px;
+  font-weight: bold;
 
   box-shadow:
-    0 10px 25px rgba(217, 47, 69, 0.25);
+    0 7px 16px rgba(217, 47, 69, 0.20);
 }
 
 .brand h1 {
   margin: 0;
-  font-family: "Playfair Display", Georgia, serif;
-  font-size: 31px;
-  line-height: 1;
-  color: var(--ink);
+
+  color: var(--black);
+
+  font-size: 25px;
+  line-height: 1.1;
 }
 
 .brand p {
-  margin: 8px 0 0;
-  color: var(--muted);
-  font-size: 13px;
-  letter-spacing: 0.2px;
+  margin: 5px 0 0;
+
+  color: var(--gray);
+
+  font-size: 12px;
 }
 
-/* Login heading */
+/* =========================================================
+   LOGIN TEXT
+   ========================================================= */
 
 .login-card h2 {
-  margin: 0 0 9px;
+  margin: 0 0 7px;
 
-  font-size: clamp(32px, 4vw, 45px);
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  color: var(--ink);
+  color: var(--black);
+
+  font-size: 32px;
+  line-height: 1.15;
+
+  letter-spacing: -0.7px;
+}
+
+.login-card h2::before {
+  content: "// ";
+
+  color: var(--red);
+
+  font-family: monospace;
+
+  font-size: 20px;
 }
 
 .login-subtitle {
-  margin: 0 0 34px;
+  margin: 0 0 28px;
 
-  max-width: 420px;
+  color: var(--gray);
 
-  color: var(--muted);
-  font-size: 15px;
-  line-height: 1.7;
+  font-size: 14px;
+  line-height: 1.6;
 }
 
-/* Login fields */
+/* =========================================================
+   LOGIN INPUTS
+   ========================================================= */
 
-.login-card label,
-.product-form label {
+.login-card label {
   display: block;
 
-  margin-bottom: 9px;
+  margin-bottom: 8px;
 
-  font-size: 13px;
-  font-weight: 700;
-  color: #393436;
+  color: #393336;
 
-  letter-spacing: 0.2px;
+  font-size: 12px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
 }
 
-.login-card input,
-.product-form input,
-.product-form textarea {
-  width: 100%;
+.login-card label::before {
+  content: "▸ ";
 
-  border: 1.5px solid #e5d7da;
-  border-radius: 12px;
+  color: var(--red);
 
-  padding: 14px 16px;
-  margin-bottom: 21px;
-
-  outline: none;
-
-  background: #fff;
-  color: var(--ink);
-
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+  font-family: monospace;
 }
 
 .login-card input {
+  width: 100%;
+
   min-height: 50px;
+
+  padding: 13px 14px;
+
+  margin-bottom: 19px;
+
+  border: 1px solid #dfcdd0;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: var(--black);
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
-.login-card input:focus,
-.product-form input:focus,
-.product-form textarea:focus {
-  border-color: var(--berry);
+.login-card input::placeholder {
+  color: #aaa2a5;
+}
+
+.login-card input:focus {
+  border-color: var(--red);
 
   box-shadow:
-    0 0 0 4px rgba(217, 47, 69, 0.08);
+    0 0 0 3px rgba(217, 47, 69, 0.08);
 }
 
-.login-card input::placeholder,
-.product-form input::placeholder,
-.product-form textarea::placeholder {
-  color: #aaa1a4;
-}
-
-/* Login button */
+/* =========================================================
+   LOGIN BUTTON
+   ========================================================= */
 
 .login-card form button {
   width: 100%;
 
   border: none;
-  border-radius: 12px;
 
-  padding: 15px 20px;
+  border-radius: 9px;
+
+  padding: 13px 20px;
+
   margin-top: 3px;
 
-  background: var(--berry);
+  background: var(--red);
+
   color: white;
 
   font-size: 14px;
-  font-weight: 700;
+  font-weight: bold;
 
   box-shadow:
-    0 9px 20px rgba(217, 47, 69, 0.20);
+    4px 4px 0 var(--green);
 
   transition:
     background 0.2s ease,
-    transform 0.2s ease,
-    box-shadow 0.2s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .login-card form button:hover {
-  background: var(--berry-dark);
+  background: var(--red-dark);
 
-  transform: translateY(-2px);
+  transform: translate(1px, 1px);
 
   box-shadow:
-    0 12px 25px rgba(217, 47, 69, 0.26);
+    2px 2px 0 var(--green);
+}
+
+.login-card form button:active {
+  transform: translate(3px, 3px);
+
+  box-shadow: none;
 }
 
 .login-note {
-  margin-top: 28px;
+  margin: 22px 0 0;
 
   text-align: center;
 
-  color: #999195;
-  font-size: 12px;
-}
+  color: #999194;
 
-/* =========================================================
-   LOGIN DECORATIVE RIGHT SIDE
-   ========================================================= */
-
-/*
-   We use the login card itself as the main content.
-   A decorative visual is created through its right-side
-   background layer without changing JSX.
-*/
-
-.login-card::after {
-  content: "🍓";
-
-  position: absolute;
-
-  width: 46vw;
-  height: 100vh;
-
-  right: 0;
-  top: 0;
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  font-size: clamp(90px, 13vw, 180px);
-
-  background:
-    radial-gradient(circle at 30% 30%, #ef5367 0 3%, transparent 3.5%),
-    radial-gradient(circle at 70% 60%, #ef5367 0 3%, transparent 3.5%),
-    radial-gradient(circle at 55% 25%, #ef5367 0 2.5%, transparent 3%),
-    linear-gradient(
-      145deg,
-      #d92f45 0%,
-      #c6283d 55%,
-      #a91f34 100%
-    );
-
-  color: white;
-
-  z-index: -1;
-
-  clip-path: polygon(
-    18% 0,
-    100% 0,
-    100% 100%,
-    18% 100%,
-    0 50%
-  );
-
-  opacity: 0.98;
+  font-size: 11px;
 }
 
 /* =========================================================
@@ -345,47 +404,52 @@ button {
    ========================================================= */
 
 .alert {
-  padding: 14px 17px;
+  padding: 13px 15px;
 
-  border-radius: 11px;
+  margin-bottom: 20px;
 
-  margin-bottom: 22px;
+  border-radius: 9px;
 
   font-size: 13px;
-  font-weight: 600;
+  line-height: 1.5;
 
   border: 1px solid transparent;
 }
 
 .alert.success {
-  background: var(--leaf-light);
-  color: var(--leaf-dark);
-  border-color: #cde2d2;
+  background: var(--green-soft);
+
+  color: var(--green-dark);
+
+  border-color: #cde1d2;
 }
 
 .alert.error {
-  background: #fff0f2;
-  color: #a82337;
-  border-color: #f1cbd1;
+  background: var(--red-soft);
+
+  color: var(--red-dark);
+
+  border-color: #f0cbd1;
 }
 
 /* =========================================================
-   TOP NAVIGATION
+   TOP BAR
    ========================================================= */
 
 .topbar {
-  min-height: 78px;
+  min-height: 72px;
 
-  padding: 0 6%;
+  padding: 0 7%;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  background: var(--ink);
+  background: var(--black);
+
   color: white;
 
-  border-bottom: 4px solid var(--berry);
+  border-bottom: 3px solid var(--red);
 
   position: relative;
   z-index: 10;
@@ -394,180 +458,160 @@ button {
 .logo {
   display: flex;
   align-items: center;
-  gap: 11px;
 
-  font-family: "Playfair Display", Georgia, serif;
+  gap: 10px;
 
-  font-size: 24px;
-  font-weight: 700;
+  font-size: 21px;
+  font-weight: bold;
 }
 
 .logo::before {
   content: "🍓";
 
-  width: 38px;
-  height: 38px;
+  width: 34px;
+  height: 34px;
 
   display: flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: 11px;
+  background: var(--red);
 
-  background: var(--berry);
+  border-radius: 9px;
 
-  font-family: Arial, sans-serif;
-  font-size: 19px;
+  font-size: 17px;
 }
 
 .topbar span {
   font-size: 12px;
-  opacity: 0.65;
+
+  opacity: 0.7;
 }
 
 .topbar-right {
   display: flex;
   align-items: center;
-  gap: 18px;
+
+  gap: 14px;
 }
 
 .topbar-right > span {
-  padding: 8px 13px;
+  padding: 7px 12px;
+
+  border: 1px solid #48484a;
 
   border-radius: 20px;
 
-  background: rgba(255, 255, 255, 0.08);
+  font-size: 12px;
 
-  font-size: 13px;
   opacity: 1;
 }
 
 .logout-btn {
-  border: 1px solid #5d5d60;
+  padding: 8px 14px;
+
+  border: 1px solid #5b5b5e;
+
+  border-radius: 8px;
 
   background: transparent;
 
   color: white;
 
-  border-radius: 9px;
-
-  padding: 9px 15px;
-
-  font-size: 13px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: bold;
 
   transition:
     background 0.2s ease,
-    border-color 0.2s ease,
-    transform 0.2s ease;
+    border-color 0.2s ease;
 }
 
 .logout-btn:hover {
-  background: var(--berry);
-  border-color: var(--berry);
+  background: var(--red);
 
-  transform: translateY(-1px);
+  border-color: var(--red);
 }
 
 /* =========================================================
-   MAIN PAGE BACKGROUND
+   MAIN CONTAINER
    ========================================================= */
 
 .container {
-  width: 88%;
-  max-width: 1250px;
+  width: 86%;
+  max-width: 1080px;
 
   margin: 0 auto;
 
-  padding: 48px 0 75px;
+  padding: 42px 0 70px;
 
   position: relative;
 }
 
-/* Decorative background circles */
-
-.container::before {
-  content: "";
-
-  position: fixed;
-
-  width: 320px;
-  height: 320px;
-
-  border-radius: 50%;
-
-  background: #ffecef;
-
-  top: 170px;
-  right: -170px;
-
-  z-index: -1;
-}
-
-.container::after {
-  content: "";
-
-  position: fixed;
-
-  width: 260px;
-  height: 260px;
-
-  border-radius: 50%;
-
-  background: #edf6ef;
-
-  bottom: -100px;
-  left: -130px;
-
-  z-index: -1;
-}
-
 /* =========================================================
-   FORM CARD
+   MANAGEMENT CARDS
    ========================================================= */
 
-.form-card {
+.form-card,
+.products-section {
   position: relative;
 
   background: var(--white);
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--red);
 
-  border-radius: 22px;
+  border-radius: 16px;
 
-  padding: 34px 36px 38px;
+  padding: 30px 32px;
 
-  margin-bottom: 30px;
+  margin-bottom: 25px;
 
   box-shadow:
-    0 14px 40px rgba(91, 40, 47, 0.07);
+    0 8px 25px rgba(91, 40, 47, 0.055);
 
   overflow: hidden;
 }
 
-/* Red top accent */
+/* red top marker */
 
-.form-card::before {
+.form-card::before,
+.products-section::before {
   content: "";
 
   position: absolute;
 
-  left: 0;
   top: 0;
+  left: 22px;
 
-  width: 100%;
-  height: 5px;
+  width: 70px;
+  height: 3px;
 
-  background: linear-gradient(
-    90deg,
-    var(--berry),
-    #ed5367,
-    var(--leaf)
-  );
+  background: var(--red);
+
+  border-radius: 0 0 4px 4px;
+}
+
+/* green corner marker */
+
+.form-card::after,
+.products-section::after {
+  content: "";
+
+  position: absolute;
+
+  right: 0;
+  bottom: 0;
+
+  width: 28px;
+  height: 28px;
+
+  border-right: 2px solid var(--green);
+  border-bottom: 2px solid var(--green);
+
+  border-radius: 0 0 15px 0;
 }
 
 /* =========================================================
-   SECTION HEADINGS
+   SECTION HEADING
    ========================================================= */
 
 .section-heading {
@@ -576,47 +620,109 @@ button {
   justify-content: space-between;
   align-items: flex-start;
 
-  gap: 25px;
+  gap: 20px;
 
-  margin-bottom: 30px;
+  margin-bottom: 25px;
+
+  padding-bottom: 17px;
+
+  border-bottom: 1px solid #f0dfe2;
 }
 
 .section-heading h2 {
-  margin: 0 0 7px;
+  margin: 0 0 5px;
 
-  font-family: "Playfair Display", Georgia, serif;
+  color: var(--black);
 
-  font-size: 28px;
-  line-height: 1.15;
+  font-size: 25px;
 
-  color: var(--ink);
+  line-height: 1.2;
+}
 
-  letter-spacing: -0.5px;
+.section-heading h2::before {
+  content: "// ";
+
+  color: var(--red);
+
+  font-family: monospace;
+
+  font-size: 16px;
 }
 
 .section-heading p {
   margin: 0;
 
-  color: var(--muted);
+  color: var(--gray);
 
-  font-size: 13px;
-  line-height: 1.6;
+  font-size: 12px;
+
+  line-height: 1.5;
 }
 
 /* =========================================================
    FORM
    ========================================================= */
 
-.product-form {
-  position: relative;
+.product-form label {
+  display: block;
+
+  margin-bottom: 8px;
+
+  color: #393336;
+
+  font-size: 12px;
+  font-weight: bold;
+
+  text-transform: uppercase;
+
+  letter-spacing: 0.6px;
+}
+
+.product-form label::before {
+  content: "▸ ";
+
+  color: var(--red);
+
+  font-family: monospace;
+}
+
+.product-form input,
+.product-form textarea {
+  width: 100%;
+
+  padding: 13px 14px;
+
+  margin-bottom: 18px;
+
+  border: 1px solid #dfcdd0;
+
+  border-radius: 9px;
+
+  background: #fff;
+
+  color: var(--black);
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.product-form input:focus,
+.product-form textarea:focus {
+  border-color: var(--red);
+
+  box-shadow:
+    0 0 0 3px rgba(217, 47, 69, 0.07);
 }
 
 .product-form textarea {
-  min-height: 105px;
+  min-height: 100px;
 
   resize: vertical;
 
-  line-height: 1.6;
+  line-height: 1.5;
 }
 
 .form-row {
@@ -624,7 +730,7 @@ button {
 
   grid-template-columns: 1fr 1fr;
 
-  gap: 22px;
+  gap: 20px;
 }
 
 .form-actions {
@@ -632,90 +738,111 @@ button {
 
   align-items: center;
 
-  gap: 11px;
+  gap: 10px;
 
-  margin-top: 3px;
+  margin-top: 2px;
 }
 
 .form-actions button {
+  padding: 11px 19px;
+
   border: none;
 
-  border-radius: 10px;
+  border-radius: 8px;
 
-  padding: 12px 20px;
-
-  background: var(--berry);
+  background: var(--red);
 
   color: white;
 
-  font-size: 13px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: bold;
+
+  box-shadow:
+    3px 3px 0 var(--green);
 
   transition:
     background 0.2s ease,
-    transform 0.2s ease;
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
 }
 
 .form-actions button:hover {
-  background: var(--berry-dark);
+  background: var(--red-dark);
 
-  transform: translateY(-1px);
+  transform: translate(1px, 1px);
+
+  box-shadow:
+    2px 2px 0 var(--green);
 }
 
-.secondary-btn,
-.refresh-btn {
-  border: 1px solid #d8c8cb !important;
+.secondary-btn {
+  border: 1px solid #d5c5c8 !important;
 
   background: white !important;
 
-  color: var(--leaf-dark) !important;
+  color: var(--green-dark) !important;
+
+  box-shadow: none !important;
 }
 
-.secondary-btn:hover,
-.refresh-btn:hover {
-  background: var(--leaf-light) !important;
+.secondary-btn:hover {
+  background: var(--green-soft) !important;
 
-  border-color: #bdd3c2 !important;
-}
+  border-color: #bdd2c2 !important;
 
-.refresh-btn {
-  border-radius: 10px;
-
-  padding: 10px 15px;
-
-  font-size: 12px;
-  font-weight: 700;
+  transform: none !important;
 }
 
 /* =========================================================
-   PRODUCTS SECTION
+   REFRESH
    ========================================================= */
 
-.products-section {
-  background: white;
+.refresh-btn {
+  padding: 9px 14px;
 
-  border: 1px solid var(--border);
+  border: 1px solid var(--red) !important;
 
-  border-radius: 22px;
+  border-radius: 8px;
 
-  padding: 34px 36px 36px;
+  background: white !important;
 
-  margin-bottom: 30px;
+  color: var(--red-dark) !important;
 
-  box-shadow:
-    0 14px 40px rgba(91, 40, 47, 0.07);
+  font-size: 11px;
+
+  font-weight: bold;
+
+  white-space: nowrap;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.refresh-btn::before {
+  content: "↻ ";
+
+  font-size: 14px;
+}
+
+.refresh-btn:hover {
+  background: var(--red-soft) !important;
+
+  color: var(--red-dark) !important;
 }
 
 /* =========================================================
-   TABLE
+   PRODUCT TABLE
    ========================================================= */
 
 .table-wrapper {
+  width: 100%;
+
   overflow-x: auto;
 
-  border: 1px solid #eadcdf;
+  border: 1px solid var(--red);
 
-  border-radius: 15px;
+  border-radius: 10px;
 
   background: white;
 }
@@ -723,403 +850,23 @@ button {
 table {
   width: 100%;
 
-  border-collapse: separate;
+  min-width: 760px;
 
-  border-spacing: 0;
+  border-collapse: collapse;
 
-  min-width: 800px;
-}
-
-th {
-  background: #fff0f2;
-
-  color: #4b3035;
-
-  text-align: left;
-
-  padding: 15px 16px;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.7px;
-
-  border-bottom: 1px solid #ecd6da;
-}
-
-th:first-child {
-  border-top-left-radius: 14px;
-}
-
-th:last-child {
-  border-top-right-radius: 14px;
-}
-
-td {
-  padding: 17px 16px;
-
-  border-bottom: 1px solid #f0e5e7;
-
-  font-size: 13px;
-
-  background: white;
-
-  vertical-align: middle;
-}
-
-tbody tr:last-child td {
-  border-bottom: none;
-}
-
-tbody tr {
-  transition: transform 0.15s ease;
-}
-
-tbody tr:hover td {
-  background: #fffafb;
-}
-
-.product-name {
-  font-weight: 700;
-
-  color: var(--ink);
-}
-
-/* =========================================================
-   TABLE ACTIONS
-   ========================================================= */
-
-.actions {
-  display: flex;
-
-  gap: 7px;
-}
-
-.edit-btn,
-.delete-btn {
-  border: none;
-
-  border-radius: 8px;
-
-  padding: 8px 12px;
-
-  font-size: 11px;
-
-  font-weight: 700;
-
-  transition:
-    background 0.2s ease,
-    transform 0.15s ease;
-}
-
-.edit-btn {
-  background: var(--leaf-light);
-
-  color: var(--leaf-dark);
-}
-
-.edit-btn:hover {
-  background: #d8eadd;
-
-  transform: translateY(-1px);
-}
-
-.delete-btn {
-  background: #fff0f2;
-
-  color: #b42338;
-}
-
-.delete-btn:hover {
-  background: #f9d9df;
-
-  transform: translateY(-1px);
-}
-
-/* =========================================================
-   EMPTY TABLE
-   ========================================================= */
-
-.empty {
-  text-align: center;
-
-  color: #999;
-
-  padding: 50px 20px;
-
-  font-size: 14px;
-}
-
-/* =========================================================
-   RESPONSIVE
-   ========================================================= */
-
-@media (max-width: 950px) {
-  .login-page {
-    grid-template-columns: 1fr;
-  }
-
-  .login-card {
-    min-height: 100vh;
-
-    padding: 50px 8%;
-  }
-
-  .login-card::after {
-    display: none;
-  }
-
-  .container {
-    width: 92%;
-  }
-}
-
-@media (max-width: 700px) {
-  .topbar {
-    min-height: 70px;
-
-    padding: 13px 5%;
-  }
-
-  .logo {
-    font-size: 20px;
-  }
-
-  .logo::before {
-    width: 34px;
-    height: 34px;
-
-    font-size: 17px;
-  }
-
-  .topbar-right {
-    gap: 8px;
-  }
-
-  .topbar-right > span {
-    display: none;
-  }
-
-  .container {
-    width: 94%;
-
-    padding-top: 30px;
-  }
-
-  .form-card,
-  .products-section {
-    padding: 27px 20px;
-    border-radius: 17px;
-  }
-
-  .section-heading {
-    flex-direction: column;
-
-    align-items: stretch;
-
-    gap: 17px;
-  }
-
-  .section-heading h2 {
-    font-size: 24px;
-  }
-
-  .form-row {
-    grid-template-columns: 1fr;
-
-    gap: 0;
-  }
-
-  .form-actions {
-    flex-wrap: wrap;
-  }
-
-  .login-card {
-    padding: 40px 25px;
-  }
-
-  .brand {
-    margin-bottom: 42px;
-  }
-
-  .brand h1 {
-    font-size: 27px;
-  }
-
-  .login-card h2 {
-    font-size: 34px;
-  }
-}
-
-/* =========================================================
-   STRAWBERRY TECH — FINAL VISUAL POLISH
-   ========================================================= */
-
-/* ---------------------------------------------------------
-   TECH GRID BACKGROUND
-   --------------------------------------------------------- */
-
-body {
-  background-color: #fff7f8;
-
-  background-image:
-    linear-gradient(rgba(217, 47, 69, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(217, 47, 69, 0.035) 1px, transparent 1px);
-
-  background-size: 32px 32px;
-}
-
-/* ---------------------------------------------------------
-   NARROWER MANAGEMENT AREA
-   --------------------------------------------------------- */
-
-.container {
-  width: 84%;
-  max-width: 1080px;
-  padding-top: 42px;
-}
-
-/* ---------------------------------------------------------
-   STRAWBERRY RED TECH BORDER
-   --------------------------------------------------------- */
-
-.form-card,
-.products-section {
-  border: 1px solid #d92f45;
-  border-radius: 16px;
-
-  box-shadow:
-    0 8px 25px rgba(91, 40, 47, 0.055);
-
-  position: relative;
-}
-
-/* Small technical corner accents */
-
-.form-card::after,
-.products-section::after {
-  content: "";
-
-  position: absolute;
-
-  width: 18px;
-  height: 18px;
-
-  right: -1px;
-  bottom: -1px;
-
-  border-right: 2px solid #356b45;
-  border-bottom: 2px solid #356b45;
-
-  pointer-events: none;
-}
-
-/* Top red technical line */
-
-.form-card::before,
-.products-section::before {
-  content: "";
-
-  position: absolute;
-
-  left: 24px;
-  top: -1px;
-
-  width: 75px;
-  height: 3px;
-
-  background: #d92f45;
-
-  border-radius: 0 0 3px 3px;
-}
-
-/* ---------------------------------------------------------
-   SECTION HEADING
-   --------------------------------------------------------- */
-
-.section-heading {
-  padding-bottom: 18px;
-
-  border-bottom: 1px solid #f0dadd;
-}
-
-.section-heading h2 {
-  position: relative;
-
-  display: inline-block;
-}
-
-.section-heading h2::before {
-  content: "//";
-
-  margin-right: 9px;
-
-  font-family: monospace;
-  font-size: 15px;
-
-  color: #d92f45;
-}
-
-.section-heading p {
-  font-family: "DM Sans", Arial, sans-serif;
-}
-
-/* ---------------------------------------------------------
-   FORM INPUTS — TECH STYLE
-   --------------------------------------------------------- */
-
-.product-form input,
-.product-form textarea {
-  border: 1px solid #dfc9cd;
-  border-radius: 8px;
-
-  background: #fffdfd;
-}
-
-.product-form input:focus,
-.product-form textarea:focus {
-  border-color: #d92f45;
-
-  box-shadow:
-    0 0 0 3px rgba(217, 47, 69, 0.07);
-}
-
-/* ---------------------------------------------------------
-   TABLE CONTAINER
-   --------------------------------------------------------- */
-
-.table-wrapper {
-  border: 1px solid #d92f45;
-  border-radius: 10px;
-
-  overflow: hidden;
-
-  box-shadow:
-    inset 0 0 0 1px rgba(217, 47, 69, 0.025);
-}
-
-/* ---------------------------------------------------------
-   TABLE — MORE CONTROLLED WIDTH
-   --------------------------------------------------------- */
-
-table {
   table-layout: fixed;
-  min-width: 0;
 }
 
-/* Intentional column proportions */
+/* column widths */
 
 th:nth-child(1),
 td:nth-child(1) {
-  width: 9%;
+  width: 8%;
 }
 
 th:nth-child(2),
 td:nth-child(2) {
-  width: 18%;
+  width: 19%;
 }
 
 th:nth-child(3),
@@ -1134,58 +881,63 @@ td:nth-child(4) {
 
 th:nth-child(5),
 td:nth-child(5) {
-  width: 13%;
+  width: 12%;
 }
 
 th:nth-child(6),
 td:nth-child(6) {
-  width: 19%;
+  width: 20%;
 }
 
-/* ---------------------------------------------------------
-   TECHNICAL TABLE HEADER
-   --------------------------------------------------------- */
+/* header */
 
 th {
+  padding: 13px 14px;
+
   background: #fff0f2;
 
-  border-bottom: 1px solid #d92f45;
+  color: #443235;
 
-  color: #342529;
+  text-align: left;
 
-  font-family: "DM Sans", Arial, sans-serif;
+  font-size: 10px;
+  font-weight: bold;
 
-  font-size: 11px;
+  text-transform: uppercase;
 
-  letter-spacing: 1px;
+  letter-spacing: 0.9px;
 
-  white-space: nowrap;
+  border-bottom: 1px solid var(--red);
 }
-
-/* Tiny technical marker */
 
 th::before {
   content: "• ";
 
-  color: #d92f45;
+  color: var(--red);
 }
 
-/* ---------------------------------------------------------
-   TABLE ROWS
-   --------------------------------------------------------- */
+/* rows */
 
 td {
-  padding: 16px 14px;
+  padding: 15px 14px;
 
-  color: #302b2d;
+  background: white;
 
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  color: #302c2e;
+
+  font-size: 13px;
+
+  border-bottom: 1px solid #eee3e5;
+
+  vertical-align: middle;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
 }
 
 tbody tr:hover td {
-  background: #fff8f9;
+  background: #fff9fa;
 }
 
 /* ID */
@@ -1198,153 +950,178 @@ td:first-child {
   font-size: 12px;
 }
 
-/* Product name */
+/* Product */
 
 .product-name {
-  color: #202124;
+  color: var(--black);
 
-  font-weight: 700;
+  font-weight: bold;
 }
 
-/* ---------------------------------------------------------
-   ACTION BUTTONS
-   --------------------------------------------------------- */
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.actions {
+  display: flex;
+
+  gap: 7px;
+
+  align-items: center;
+}
 
 .edit-btn,
 .delete-btn {
+  padding: 7px 11px;
+
   border-radius: 7px;
 
-  padding: 8px 13px;
-
   font-size: 11px;
+  font-weight: bold;
 
-  letter-spacing: 0.2px;
+  transition:
+    background 0.2s ease,
+    transform 0.15s ease;
 }
 
 .edit-btn {
-  border: 1px solid #c9dfce;
+  border: 1px solid #cce0d0;
 
-  background: #edf6ef;
+  background: var(--green-soft);
 
-  color: #285437;
+  color: var(--green-dark);
+}
+
+.edit-btn:hover {
+  background: #dcecdf;
+
+  transform: translateY(-1px);
 }
 
 .delete-btn {
-  border: 1px solid #f0cdd2;
+  border: 1px solid #f0ccd2;
 
-  background: #fff0f2;
+  background: var(--red-soft);
 
-  color: #b92338;
+  color: var(--red-dark);
 }
 
-/* ---------------------------------------------------------
-   REFRESH BUTTON — TECH LOOK
-   --------------------------------------------------------- */
+.delete-btn:hover {
+  background: #f8dce1;
 
-.refresh-btn {
-  border: 1px solid #d92f45 !important;
-
-  background: #fff !important;
-
-  color: #b92338 !important;
-
-  border-radius: 8px;
-
-  position: relative;
+  transform: translateY(-1px);
 }
 
-.refresh-btn::before {
-  content: "↻";
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
 
-  margin-right: 6px;
+.empty {
+  padding: 42px 20px;
 
-  font-size: 14px;
+  text-align: center;
+
+  color: #999;
+
+  font-size: 13px;
 }
 
-.refresh-btn:hover {
-  background: #fff0f2 !important;
-
-  border-color: #b92338 !important;
-}
-
-/* ---------------------------------------------------------
-   ADD PRODUCT BUTTON
-   --------------------------------------------------------- */
-
-.form-actions button:not(.secondary-btn) {
-  border-radius: 8px;
-
-  background: #d92f45;
-
-  box-shadow:
-    4px 4px 0 #356b45;
-}
-
-.form-actions button:not(.secondary-btn):hover {
-  background: #b92338;
-
-  transform: translate(1px, 1px);
-
-  box-shadow:
-    2px 2px 0 #356b45;
-}
-
-/* ---------------------------------------------------------
-   LABELS
-   --------------------------------------------------------- */
-
-.product-form label {
-  font-size: 12px;
-
-  text-transform: uppercase;
-
-  letter-spacing: 0.8px;
-
-  color: #4b3a3d;
-}
-
-.product-form label::before {
-  content: "▸ ";
-
-  color: #d92f45;
-
-  font-family: monospace;
-}
-
-/* ---------------------------------------------------------
-   PRODUCT LIST TITLE
-   --------------------------------------------------------- */
-
-.products-section .section-heading h2 {
-  font-size: 27px;
-}
-
-/* ---------------------------------------------------------
+/* =========================================================
    RESPONSIVE
-   --------------------------------------------------------- */
+   ========================================================= */
 
-@media (max-width: 900px) {
+@media (max-width: 800px) {
+
+  .login-card {
+    max-width: 460px;
+
+    padding: 38px 30px;
+  }
+
   .container {
     width: 92%;
   }
 
-  table {
-    min-width: 760px;
-    table-layout: auto;
+  .form-card,
+  .products-section {
+    padding: 26px 22px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+
+    gap: 0;
   }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+
+  .login-page {
+    padding: 20px 14px;
+  }
+
+  .login-card {
+    padding: 34px 23px;
+
+    border-radius: 15px;
+  }
+
+  .brand {
+    margin-bottom: 30px;
+  }
+
+  .brand h1 {
+    font-size: 22px;
+  }
+
+  .login-card h2 {
+    font-size: 28px;
+  }
+
+  .topbar {
+    padding: 12px 5%;
+
+    min-height: 68px;
+  }
+
+  .logo {
+    font-size: 18px;
+  }
+
+  .topbar-right > span {
+    display: none;
+  }
+
   .container {
     width: 94%;
+
+    padding-top: 28px;
   }
 
   .form-card,
   .products-section {
-    border-radius: 14px;
+    padding: 23px 17px;
+
+    border-radius: 13px;
   }
 
-  .section-heading h2::before {
-    display: none;
+  .section-heading {
+    flex-direction: column;
+
+    align-items: stretch;
+
+    gap: 14px;
+  }
+
+  .section-heading h2 {
+    font-size: 23px;
+  }
+
+  .refresh-btn {
+    align-self: flex-start;
+  }
+
+  .form-actions {
+    flex-wrap: wrap;
   }
 }
